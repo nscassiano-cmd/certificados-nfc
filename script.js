@@ -2,36 +2,37 @@
 const params = new URLSearchParams(window.location.search);
 
 const nome = params.get("nome") || "Homenageado(a)";
-const img = params.get("img");
 
-// Coloca o nome na tela
+// Remove espaços do nome
+const nomeArquivo = nome.replace(/\s+/g, "");
+
 document.getElementById("nome").textContent = nome;
 
-// Elementos
 const certificado = document.getElementById("certificado");
 const download = document.getElementById("download");
 const botao = download.querySelector("button");
 const loading = document.querySelector(".loading");
 
-// Se foi informada uma imagem
-if (img) {
+// Caminho do certificado
+const caminho = "certificados/" + nomeArquivo + ".png";
 
-    setTimeout(() => {
+setTimeout(() => {
 
-        certificado.src = "certificados/" + img;
+    certificado.src = caminho;
+
+    certificado.onload = () => {
 
         certificado.style.display = "block";
-
         loading.style.display = "none";
-
         botao.style.display = "inline-block";
+        download.href = caminho;
 
-        download.href = "certificados/" + img;
+    };
 
-    }, 3000);
+    certificado.onerror = () => {
 
-} else {
+        loading.innerHTML = "<p>Certificado não encontrado.</p>";
 
-    loading.innerHTML = "<p>Certificado não encontrado.</p>";
+    };
 
-}
+}, 3000);
