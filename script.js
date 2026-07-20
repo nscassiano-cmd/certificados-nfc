@@ -1,3 +1,7 @@
+// ================================
+// Certificados NFC
+// ================================
+
 const params = new URLSearchParams(window.location.search);
 
 const id = params.get("id");
@@ -43,6 +47,7 @@ if (id && certificados[id]) {
 }
 
 const nome = document.getElementById("nome");
+const mensagem = document.getElementById("mensagem");
 const certificado = document.getElementById("certificado");
 const download = document.getElementById("download");
 const loading = document.querySelector(".loading");
@@ -53,27 +58,37 @@ if (!arquivo) {
 
 } else {
 
-    nome.textContent = arquivo.replace(".png","");
+    nome.textContent = arquivo.replace(".png", "");
 
-    certificado.onload = function () {
-    loading.style.display = "nome";
-    certificado.style.display = "block";
+    mensagem.textContent =
+    "Esta homenagem foi preparada com muito carinho em reconhecimento à sua dedicação, compromisso e cuidado com tantas vidas.";
 
-    download.href = certificado.src;
-    download.download = arquivo;
-    download.style.display = "inline-block";
-};
+    setTimeout(() => {
+
+        certificado.src = "certificados/" + arquivo;
+
+    },3000);
+
+    certificado.onload = function(){
+
+        loading.style.display = "none";
+
+        certificado.style.display = "block";
+
+        nome.style.display = "block";
+        mensagem.style.display = "block";
+
+        download.href = certificado.src;
+        download.download = arquivo;
+        download.style.display = "inline-block";
+
+    }
 
     certificado.onerror = function(){
 
-        loading.innerHTML="<h2>Erro ao carregar o certificado.</h2>";
+        loading.innerHTML =
+        "<h2>Erro ao carregar o certificado.</h2>";
 
-    };
-
-    setTimeout(function(){
-
-        certificado.src="certificados/"+arquivo;
-
-    },3000);
+    }
 
 }
