@@ -21,7 +21,7 @@ const certificados = {
     "15":"lilian.png",
     "16":"marcia.png",
     "17":"maricelia.png",
-    "18":"marize.png",
+    "18":"marlize.png",
     "19":"ney.png",
     "20":"patricia.png",
     "21":"paulo.png",
@@ -56,7 +56,7 @@ if (!arquivo) {
     nome.textContent = arquivo.replace(".png","");
 
     certificado.onload = function () {
-    loading.style.display = "none";
+    loading.style.display = "nome";
     certificado.style.display = "block";
 
     download.href = certificado.src;
