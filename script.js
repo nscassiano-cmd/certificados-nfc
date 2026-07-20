@@ -1,4 +1,8 @@
-// Lê o parâmetro da URL
+// ==============================
+// Certificados NFC
+// ==============================
+
+// Lê o ID da URL
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
@@ -34,50 +38,47 @@ const certificados = {
     "28": "vanessa.png"
 };
 
-// Elementos da página
 const nome = document.getElementById("nome");
 const certificado = document.getElementById("certificado");
 const download = document.getElementById("download");
-const botao = download.querySelector("button");
 const loading = document.querySelector(".loading");
 
-// Verifica se existe o ID
-if (id && certificados[id]) {
+if (!id || !certificados[id]) {
 
-    const arquivo = certificados[id];
-
-    // Nome sem extensão
-    nome.textContent = arquivo.replace(".png", "");
-
-    setTimeout(() => {
-
-        certificado.src = "certificados/" + arquivo;
-
-        certificado.onload = () => {
-
-    loading.style.display = "none";
-
-    certificado.style.display = "block";
-
-    download.href = caminho;
-    download.setAttribute("download", arquivo);
-
-    // Mostra o link e o botão
-    download.style.display = "inline-block";
-
-    const botao = download.querySelector("button");
-    botao.style.display = "inline-block";
-
-};
-        certificado.onerror = () => {
-            loading.innerHTML = "<p>Erro ao carregar o certificado.</p>";
-        };
-
-    }, 2000);
+    nome.innerHTML = "";
+    loading.innerHTML = "<h2>Certificado não encontrado.</h2>";
 
 } else {
 
-    nome.textContent = "";
-    loading.innerHTML = "<p>Certificado não encontrado.</p>";
+    const arquivo = certificados[id];
+    const caminho = "certificados/" + arquivo;
+
+    nome.innerHTML = arquivo.replace(".png","");
+
+    setTimeout(() => {
+
+        certificado.src = caminho;
+
+    },2000);
+
+    certificado.onload = function(){
+
+        loading.style.display = "none";
+
+        certificado.style.display = "block";
+
+        download.href = caminho;
+
+        download.download = arquivo;
+
+        download.style.display = "block";
+
+    }
+
+    certificado.onerror = function(){
+
+        loading.innerHTML = "<h2>Erro ao carregar certificado.</h2>";
+
+    }
 
 }
