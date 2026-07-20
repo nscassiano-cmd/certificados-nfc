@@ -3,59 +3,61 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Homenagem Especial</title>
+    <title>Homenagem Especial</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="background"></div>
+    <div class="container">
 
-<div class="container">
+        <div class="card">
 
-<div class="card">
+            <div class="heart">
+                ❤️
+            </div>
 
-<div class="heart">
-❤
-</div>
+            <h1>Obrigado!</h1>
 
-<h1>Obrigado!</h1>
+            <h2 id="nome"></h2>
 
-<h2 id="nome"></h2>
+            <p id="mensagem">
+                Esta homenagem foi preparada com muito carinho em reconhecimento à sua dedicação, compromisso e cuidado com tantas vidas.
+            </p>
 
-<p id="mensagem">
-Esta homenagem foi preparada com muito carinho em reconhecimento à sua dedicação, compromisso e cuidado com tantas vidas.
-</p>
+            <div class="loading">
 
-<div class="loading">
+                <div class="spinner"></div>
 
-<div class="spinner"></div>
+                <p>Carregando seu certificado...</p>
 
-<p>Carregando seu certificado...</p>
+            </div>
 
-</div>
+            <!-- CERTIFICADO -->
+            <img id="certificado" src="" alt="Certificado">
 
-<a id="download" href="" download style="display:none;">
-    <button type="button">
-        ⬇️ Baixar Certificado
-    </button>
-</a>
+            <!-- DOWNLOAD -->
+            <a id="download" href="" download>
+                <button type="button">
+                    ⬇️ Baixar Certificado
+                </button>
+            </a>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
