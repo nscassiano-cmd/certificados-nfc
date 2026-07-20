@@ -1,38 +1,74 @@
-// Lê os parâmetros da URL
+// Lê o parâmetro da URL
 const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
 
-const nome = params.get("nome") || "Homenageado(a)";
+// Lista dos certificados
+const certificados = {
+    "1": "AnaClaudia.png",
+    "2": "AnaLuisa.png",
+    "3": "AndredaSilva.png",
+    "4": "Carla.png",
+    "5": "anaCarolini.png",
+    "6": "caroline.png",
+    "7": "eliane.png",
+    "8": "ferandaN.png",
+    "9": "fernandaB.png",
+    "10": "flavia.png",
+    "11": "greicy.png",
+    "12": "hayra.png",
+    "13": "juliana.png",
+    "14": "ligia.png",
+    "15": "lilian.png",
+    "16": "marcia.png",
+    "17": "maricelia.png",
+    "18": "marize.png",
+    "19": "ney.png",
+    "20": "patricia.png",
+    "21": "paulo.png",
+    "22": "pedro.png",
+    "23": "raimundo.png",
+    "24": "raquelA.png",
+    "25": "raquelF.png",
+    "26": "solange.png",
+    "27": "thaynara.png",
+    "28": "vanessa.png"
+};
 
-// Remove espaços do nome
-const nomeArquivo = nome.replace(/\s+/g, "");
-
-document.getElementById("nome").textContent = nome;
-
+// Elementos da página
+const nome = document.getElementById("nome");
 const certificado = document.getElementById("certificado");
 const download = document.getElementById("download");
 const botao = download.querySelector("button");
 const loading = document.querySelector(".loading");
 
-// Caminho do certificado
-const caminho = "certificados/" + nomeArquivo + ".png";
+// Verifica se existe o ID
+if (id && certificados[id]) {
 
-setTimeout(() => {
+    const arquivo = certificados[id];
 
-    certificado.src = caminho;
+    // Nome sem extensão
+    nome.textContent = arquivo.replace(".png", "");
 
-    certificado.onload = () => {
+    setTimeout(() => {
 
-        certificado.style.display = "block";
-        loading.style.display = "none";
-        botao.style.display = "inline-block";
-        download.href = caminho;
+        certificado.src = "certificados/" + arquivo;
 
-    };
+        certificado.onload = () => {
+            loading.style.display = "none";
+            certificado.style.display = "block";
+            botao.style.display = "inline-block";
+            download.href = certificado.src;
+        };
 
-    certificado.onerror = () => {
+        certificado.onerror = () => {
+            loading.innerHTML = "<p>Erro ao carregar o certificado.</p>";
+        };
 
-        loading.innerHTML = "<p>Certificado não encontrado.</p>";
+    }, 2000);
 
-    };
+} else {
 
-}, 3000);
+    nome.textContent = "";
+    loading.innerHTML = "<p>Certificado não encontrado.</p>";
+
+}
