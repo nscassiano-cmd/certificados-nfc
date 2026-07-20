@@ -63,15 +63,15 @@ if (!id || !certificados[id]) {
 
     certificado.onload = function(){
 
-        loading.style.display = "none";
+    loading.style.display = "none";
 
-        certificado.style.display = "block";
+    certificado.style.display = "block";
 
-        download.href = caminho;
+    download.href = caminho;
+    download.download = arquivo;
 
-        download.download = arquivo;
-
-        download.style.display = "block";
+    // mostra o link
+    download.style.display = "inline-block";
 
     }
 
