@@ -128,7 +128,12 @@ h2{
 
 }
 
-button{
+#download{
+    display:none;
+    text-decoration:none;
+}
+
+#download button{
 
     margin-top:20px;
 
@@ -146,7 +151,15 @@ button{
 
     font-size:17px;
 
-    display:none;
+    display:inline-block;
+
+}
+
+#download button:hover{
+
+    background:#5d1020;
+
+}
 
 }
 
