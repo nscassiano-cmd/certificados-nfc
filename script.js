@@ -54,12 +54,21 @@ if (id && certificados[id]) {
         certificado.src = "certificados/" + arquivo;
 
         certificado.onload = () => {
-            loading.style.display = "none";
-            certificado.style.display = "block";
-            botao.style.display = "inline-block";
-            download.href = certificado.src;
-        };
 
+    loading.style.display = "none";
+
+    certificado.style.display = "block";
+
+    download.href = caminho;
+    download.setAttribute("download", arquivo);
+
+    // Mostra o link e o botão
+    download.style.display = "inline-block";
+
+    const botao = download.querySelector("button");
+    botao.style.display = "inline-block";
+
+};
         certificado.onerror = () => {
             loading.innerHTML = "<p>Erro ao carregar o certificado.</p>";
         };
