@@ -55,16 +55,14 @@ if (!arquivo) {
 
     nome.textContent = arquivo.replace(".png","");
 
-    certificado.onload = function(){
+    certificado.onload = function () {
+    loading.style.display = "none";
+    certificado.style.display = "block";
 
-        loading.style.display="none";
-        certificado.style.display="block";
-
-        download.href = certificado.src;
-        download.download = arquivo;
-        download.style.display="inline-block";
-
-    };
+    download.href = certificado.src;
+    download.download = arquivo;
+    download.style.display = "inline-block";
+};
 
     certificado.onerror = function(){
 
