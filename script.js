@@ -36,6 +36,8 @@ const certificados = {
     "26":"solange.png",
     "27":"thaynara.png",
     "28":"vanessa.png"
+    "29":"enfmaria.png"
+
 };
 
 let arquivo = "";
