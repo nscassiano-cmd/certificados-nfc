@@ -51,36 +51,33 @@ if (!certificados[id]) {
 
     const arquivo = certificados[id];
 
-    nome.innerHTML = arquivo.replace(".png","");
+    nome.textContent = arquivo.replace(".png","");
 
+    mensagem.textContent =
+    "Esta homenagem foi preparada com muito carinho em reconhecimento à sua dedicação, compromisso e cuidado com tantas vidas.";
+
+    // Registra os eventos ANTES de definir o src
+    certificado.onload = function () {
+
+        loading.style.display = "none";
+
+        certificado.style.display = "block";
+
+        nome.style.display = "block";
+
+        mensagem.style.display = "block";
+
+        download.href = certificado.src;
+        download.download = arquivo;
+        download.style.display = "inline-block";
+    };
+
+    certificado.onerror = function () {
+
+        loading.innerHTML =
+            "<h2>Erro ao carregar o certificado.</h2><p>" + arquivo + "</p>";
+    };
+
+    // Só agora define o src
     certificado.src = "certificados/" + arquivo + "?v=" + Date.now();
-
-    certificado.onload = function(){
-
-    alert("Imagem carregada!");
-
-    loading.style.display="none";
-
-    certificado.style.display="block";
-
-    nome.style.display="block";
-
-    mensagem.style.display="block";
-
-    download.href = certificado.src;
-
-    download.download = arquivo;
-
-    download.style.display = "inline-block";
-
-};
-
-    };
-
-    certificado.onerror=function(){
-
-        loading.innerHTML="<h2>Erro ao carregar:</h2><br>"+arquivo;
-
-    };
-
 }
