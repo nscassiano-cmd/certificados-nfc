@@ -36,7 +36,10 @@ const certificados = {
     "26":"solange.png",
     "27":"thaynara.png",
     "28":"vanessa.png",
-    "29":"enfMaria.png"
+    "29":"enfMaria.png",
+    "30":"enfLeticia.png",
+    "31":enferTayara.png",
+    "32":enferMarine.png"
 
 };
 
