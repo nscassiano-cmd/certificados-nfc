@@ -57,15 +57,23 @@ if (!certificados[id]) {
 
     certificado.onload = function(){
 
-        loading.style.display="none";
+    alert("Imagem carregada!");
 
-        certificado.style.display="block";
+    loading.style.display="none";
 
-        download.href=certificado.src;
+    certificado.style.display="block";
 
-        download.download=arquivo;
+    nome.style.display="block";
 
-        download.style.display="inline-block";
+    mensagem.style.display="block";
+
+    download.href = certificado.src;
+
+    download.download = arquivo;
+
+    download.style.display = "inline-block";
+
+};
 
     };
 
