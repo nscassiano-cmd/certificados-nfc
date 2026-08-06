@@ -1,3 +1,5 @@
-const teste = "novo script funcionando";
+alert("SCRIPT NOVO CARREGADO");
 
-console.log(teste);
+// ================================
+// Certificados NFC
+// ================================
