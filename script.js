@@ -35,8 +35,8 @@ const certificados = {
     "25":"raquelF.png",
     "26":"solange.png",
     "27":"thaynara.png",
-    "28":"vanessa.png"
-    "29":"enfmaria.png"
+    "28":"vanessa.png",
+    "29":"enfMaria.png"
 
 };
 
