@@ -40,7 +40,6 @@ const certificados = {
     "30":"enfLeticia.png",
     "31":"enferTayara.png",
     "32":"enferMarine.png"
-
 };
 
 let arquivo = "";
@@ -63,16 +62,10 @@ if (!arquivo) {
 
 } else {
 
-    nome.textContent = arquivo.replace(".png", "");
+    nome.textContent = arquivo.replace(".png","");
 
     mensagem.textContent =
     "Esta homenagem foi preparada com muito carinho em reconhecimento à sua dedicação, compromisso e cuidado com tantas vidas.";
-
-    setTimeout(() => {
-
-        certificado.src = "certificados/" + arquivo;
-
-    },3000);
 
     certificado.onload = function(){
 
@@ -80,20 +73,20 @@ if (!arquivo) {
 
         certificado.style.display = "block";
 
-        nome.style.display = "block";
-        mensagem.style.display = "block";
-
         download.href = certificado.src;
         download.download = arquivo;
         download.style.display = "inline-block";
 
-    }
+    };
 
     certificado.onerror = function(){
 
         loading.innerHTML =
-        "<h2>Erro ao carregar o certificado.</h2>";
+        "<h2>Erro ao carregar o certificado.</h2><p>" + arquivo + "</p>";
 
-    }
+    };
+
+    // Carrega imediatamente (sem setTimeout)
+    certificado.src = "certificados/" + arquivo + "?v=" + new Date().getTime();
 
 }
