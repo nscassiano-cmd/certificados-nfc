@@ -1,4 +1,4 @@
-alert("SCRIPT NOVO CARREGADO");
+alert("CARREGADO...");
 
 ```javascript
 // ================================
