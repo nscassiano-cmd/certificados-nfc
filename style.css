@@ -1,204 +1,182 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
+    font-family: 'Poppins', sans-serif;
 
-    font-family:'Poppins',sans-serif;
+    background: linear-gradient(
+        135deg,
+        #5d1020,
+        #7b2335,
+        #b08d57
+    );
 
-    background:linear-gradient(135deg,#5d1020,#7b2335,#b08d57);
+    min-height: 100vh;
 
-    min-height:100vh;
+    display: flex;
 
-    display:flex;
+    justify-content: center;
 
-    justify-content:center;
+    align-items: center;
 
-    align-items:center;
-
-    overflow:hidden;
-
+    overflow: auto;
 }
 
-.container{
+.container {
+    width: 100%;
 
-    width:100%;
+    display: flex;
 
-    display:flex;
+    justify-content: center;
 
-    justify-content:center;
-
-    padding:20px;
-
+    padding: 20px;
 }
 
-.card{
+.card {
+    background: white;
 
-    background:white;
+    width: 420px;
 
-    width:420px;
+    max-width: 95%;
 
-    max-width:95%;
+    border-radius: 20px;
 
-    border-radius:20px;
+    padding: 40px;
 
-    padding:40px;
+    text-align: center;
 
-    text-align:center;
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
 
-    box-shadow:0 15px 40px rgba(0,0,0,.25);
-
-    animation:aparece 1s;
-
+    animation: aparece 1s;
 }
 
-.heart{
+.heart {
+    font-size: 70px;
 
-    font-size:70px;
-
-    animation:pulsa 1s infinite;
-
+    animation: pulsa 1s infinite;
 }
 
-h1{
+h1 {
+    color: #7b2335;
 
-    color:#7b2335;
+    font-family: 'Cinzel', serif;
 
-    font-family:'Cinzel',serif;
-
-    margin-top:10px;
-
+    margin-top: 10px;
 }
 
-h2{
+h2 {
+    margin-top: 20px;
 
-    margin-top:20px;
-
-    color:#444;
-
+    color: #444;
 }
 
-#mensagem{
+#mensagem {
+    margin-top: 20px;
 
-    margin-top:20px;
+    line-height: 1.8;
 
-    line-height:1.8;
-
-    color:#555;
-
+    color: #555;
 }
 
-.loading{
-
-    margin-top:30px;
-
+.loading {
+    margin-top: 30px;
 }
 
-.spinner{
+.spinner {
+    width: 45px;
 
-    width:45px;
+    height: 45px;
 
-    height:45px;
+    border: 5px solid #ddd;
 
-    border:5px solid #ddd;
+    border-top: 5px solid #7b2335;
 
-    border-top:5px solid #7b2335;
+    border-radius: 50%;
 
-    border-radius:50%;
+    margin: auto;
 
-    margin:auto;
-
-    animation:gira 1s linear infinite;
-
+    animation: gira 1s linear infinite;
 }
 
-#certificado{
+#certificado {
+    width: 100%;
 
-    width:100%;
+    margin-top: 30px;
 
-    margin-top:30px;
+    border-radius: 10px;
 
-    border-radius:10px;
+    display: none;
 
-    display:none;
-
-    box-shadow:0 10px 25px rgba(0,0,0,.2);
-
+    box-shadow: 0 10px 25px rgba(0,0,0,.2);
 }
 
-#download{
-    display:none;
-    text-decoration:none;
+#download {
+    display: none;
+
+    text-decoration: none;
 }
 
-#download button{
+#download button {
+    margin-top: 20px;
 
-    margin-top:20px;
+    padding: 15px 30px;
 
-    padding:15px 30px;
+    border: none;
 
-    border:none;
+    border-radius: 10px;
 
-    border-radius:10px;
+    background: #7b2335;
 
-    background:#7b2335;
+    color: white;
 
-    color:white;
+    cursor: pointer;
 
-    cursor:pointer;
-
-    font-size:17px;
-
-    display:inline-block;
-
+    font-size: 17px;
 }
 
-#download button:hover{
+#download button:hover {
+    background: #5d1020;
+}
 
-    background:#5d1020;
+@keyframes pulsa {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 
 }
 
-}
+@keyframes gira {
 
-button:hover{
-
-    background:#5d1020;
-
-}
-
-@keyframes pulsa{
-
-0%{transform:scale(1);}
-50%{transform:scale(1.15);}
-100%{transform:scale(1);}
+    100% {
+        transform: rotate(360deg);
+    }
 
 }
 
-@keyframes gira{
+@keyframes aparece {
 
-100%{transform:rotate(360deg);}
+    from {
+        opacity: 0;
 
-}
+        transform: translateY(30px);
+    }
 
-@keyframes aparece{
+    to {
+        opacity: 1;
 
-from{
-
-opacity:0;
-
-transform:translateY(30px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
+        transform: translateY(0);
+    }
 
 }
