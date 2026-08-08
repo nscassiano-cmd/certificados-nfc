@@ -46,28 +46,43 @@ const loading = document.querySelector(".loading");
 let arquivo = "";
 
 if (id && certificados[id]) {
+
     arquivo = certificados[id];
-} 
-else if (nomeParam) {
+
+} else if (nomeParam) {
+
     arquivo = nomeParam + ".png";
 }
 
 if (!arquivo) {
 
-    loading.innerHTML = "<h2>Certificado não encontrado.</h2>";
+    loading.innerHTML =
+        "<h2>Certificado não encontrado.</h2>";
 
 } else {
 
-    const nomePessoa = arquivo
-        .replace(".png", "")
-        .replace(".PNG", "");
+    const nomePessoa = arquivo.replace(/\.(png|PNG)$/i, "");
 
     nome.textContent = nomePessoa;
 
     mensagem.textContent =
         "Esta homenagem foi preparada com muito carinho em reconhecimento à sua dedicação, compromisso e cuidado com tantas vidas.";
 
+    // Caminho absoluto do certificado
+    const urlCertificado =
+        window.location.origin +
+        "/certificados-nfc/certificados/" +
+        arquivo;
+
+    console.log("ID:", id);
+
+    console.log("Arquivo:", arquivo);
+
+    console.log("URL do certificado:", urlCertificado);
+
     certificado.onload = function () {
+
+        console.log("CERTIFICADO CARREGADO!");
 
         loading.style.display = "none";
 
@@ -77,7 +92,7 @@ if (!arquivo) {
 
         mensagem.style.display = "block";
 
-        download.href = certificado.src;
+        download.href = urlCertificado;
 
         download.download = arquivo;
 
@@ -86,14 +101,17 @@ if (!arquivo) {
 
     certificado.onerror = function () {
 
-        loading.innerHTML =
-            "<h2>Erro ao carregar o certificado.</h2>";
-
         console.error(
-            "Erro ao carregar:",
-            certificado.src
+            "ERRO AO CARREGAR:",
+            urlCertificado
         );
+
+        loading.innerHTML =
+            "<h2>Erro ao carregar o certificado.</h2>" +
+            "<p style='font-size:12px;word-break:break-all'>" +
+            urlCertificado +
+            "</p>";
     };
 
-    certificado.src = "certificados/" + arquivo;
+    certificado.src = urlCertificado;
 }
