@@ -1,9 +1,6 @@
-alert("CARREGADO...");
-
 ```javascript
 // ================================
 // CERTIFICADOS NFC
-// 32 ENFERMEIRAS
 // ================================
 
 const params = new URLSearchParams(window.location.search);
@@ -186,27 +183,23 @@ const certificados = {
 // ================================
 
 const nome = document.getElementById("nome");
-
 const mensagem = document.getElementById("mensagem");
-
 const certificado = document.getElementById("certificado");
-
 const download = document.getElementById("download");
-
 const loading = document.querySelector(".loading");
 
 
 // ================================
-// LOCALIZA O CERTIFICADO
+// LOCALIZAR CERTIFICADO
 // ================================
 
-let certificadoInfo = null;
+let dados = null;
 
 
 // Pelo ID
 if (id && certificados[id]) {
 
-    certificadoInfo = certificados[id];
+    dados = certificados[id];
 
 }
 
@@ -214,12 +207,9 @@ if (id && certificados[id]) {
 // Pelo nome
 else if (nomeParam) {
 
-    certificadoInfo = {
-
+    dados = {
         arquivo: nomeParam + ".png",
-
         nome: nomeParam
-
     };
 
 }
@@ -229,7 +219,7 @@ else if (nomeParam) {
 // CERTIFICADO NÃO ENCONTRADO
 // ================================
 
-if (!certificadoInfo) {
+if (!dados) {
 
     loading.innerHTML =
         "<h2>Certificado não encontrado.</h2>";
@@ -243,13 +233,8 @@ if (!certificadoInfo) {
 
 else {
 
-    const arquivo = certificadoInfo.arquivo;
-
-    const nomePessoa = certificadoInfo.nome;
-
-
-    // Mostra o nome correto
-    nome.textContent = nomePessoa;
+    // Mostrar nome correto
+    nome.textContent = dados.nome;
 
 
     // Mensagem
@@ -257,27 +242,23 @@ else {
         "Esta homenagem foi preparada com muito carinho em reconhecimento à sua dedicação, compromisso e cuidado com tantas vidas.";
 
 
-    // Caminho do certificado
-    const urlCertificado =
-        "certificados/" + arquivo;
+    // Caminho do arquivo
+    const caminho = "certificados/" + dados.arquivo;
 
 
     console.log("ID:", id);
-
-    console.log("Nome:", nomePessoa);
-
-    console.log("Arquivo:", arquivo);
-
-    console.log("URL:", urlCertificado);
+    console.log("Nome:", dados.nome);
+    console.log("Arquivo:", dados.arquivo);
+    console.log("Caminho:", caminho);
 
 
     // ================================
-    // CERTIFICADO CARREGOU
+    // CERTIFICADO CARREGADO
     // ================================
 
     certificado.onload = function () {
 
-        console.log("Certificado carregado com sucesso!");
+        console.log("CERTIFICADO CARREGADO COM SUCESSO");
 
 
         loading.style.display = "none";
@@ -292,10 +273,10 @@ else {
         mensagem.style.display = "block";
 
 
-        // Botão download
-        download.href = urlCertificado;
+        // Download
+        download.href = caminho;
 
-        download.download = arquivo;
+        download.download = dados.arquivo;
 
         download.style.display = "inline-block";
 
@@ -303,31 +284,28 @@ else {
 
 
     // ================================
-    // ERRO
+    // ERRO AO CARREGAR
     // ================================
 
     certificado.onerror = function () {
 
         console.error(
-            "Erro ao carregar:",
-            urlCertificado
+            "ERRO AO CARREGAR:",
+            caminho
         );
 
 
         loading.innerHTML =
             "<h2>Erro ao carregar o certificado.</h2>" +
             "<p>Arquivo: " +
-            arquivo +
+            dados.arquivo +
             "</p>";
 
     };
 
 
-    // ================================
-    // INICIA O CARREGAMENTO
-    // ================================
-
-    certificado.src = urlCertificado;
+    // Iniciar carregamento
+    certificado.src = caminho;
 
 }
 ```
